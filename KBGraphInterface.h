@@ -17,6 +17,8 @@ public:
     virtual ~GraphInterface(){}
 
     virtual bool add(string name, vector<string> titles) = 0;
+
+    virtual void print() = 0;
 };
 
 #endif //ASSIGNMENT_2_KBGRAPHINTERFACE_H

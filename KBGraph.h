@@ -7,7 +7,34 @@
 
 #include "KBGraphInterface.h"
 
-class Graph : GraphInterface {
+class KBGraph : public GraphInterface {
+    struct KBNode {
+        string name = "";
+        vector<string> titles;
+        vector<KBNode*> edges;
+
+        KBNode(string n, vector<string> roles) : name(n) {
+            for (int i = 0; i < roles.size(); i++) {
+                titles.push_back(roles[i]);
+            }
+        }
+    };
+
+    vector<KBNode> actorList;
+
+public:
+
+    KBGraph();
+
+    KBGraph(KBNode actor);
+
+    ~KBGraph();
+
+    bool add(string name, vector<string> titles);
+
+    void findEdges(KBNode&);
+
+    void print();
 
 };
 

@@ -4,21 +4,23 @@
 
 using namespace std;
 
-void addToGraph(vector<string> titles, string line);
+void addToGraph(vector<string> titles, string line, KBGraph& graph);
 
 string getName(string line);
 string getTitle(string title);
 bool alreadyEntered(string title, vector<string> listOfTitles);
 
-void parseInput(char **argv) {
+KBGraph parseInput(char **argv) {
+    KBGraph theGraph;
     string line = "";
     vector<string> titles;
     string name;
-    ifstream myFile(argv[1]);
+    //ifstream myFile(argv[1]);
+    ifstream myFile("bacon.txt");
     if (myFile.is_open()) {
         while (getline(myFile, line)) {
             if (line == "") {
-                addToGraph(titles, name);
+                addToGraph(titles, name, theGraph);
                 name.clear();
                 titles.clear();
             } else if (line[0] != '\t' && line != "") {
@@ -34,6 +36,7 @@ void parseInput(char **argv) {
             }
         }
         myFile.close();
+        return theGraph;
     } else cout << "Unable to open file";
 }
 
@@ -71,15 +74,12 @@ string getName(string line) {
     }
 }
 
-void addToGraph(vector<string> titles, string name) {
-    cout << name << '\n';
-    for (int i = 0; i < titles.size(); i++) {
-        cout << titles[i] << '\n';
-    }
-    cout << endl;
+void addToGraph(vector<string> titles, string name, KBGraph& graph) {
+    graph.add(name, titles);
 }
 
 int main(int argc, char **argv) {
-    parseInput(argv);
+    KBGraph theGraph = parseInput(argv);
+    theGraph.print();
     return 0;
 }
