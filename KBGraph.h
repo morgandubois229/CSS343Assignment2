@@ -32,7 +32,7 @@ public:
 
     bool add(string name, vector<string> titles);
 
-    void findEdges(KBNode&);
+    void findEdges();
 
     void print();
 

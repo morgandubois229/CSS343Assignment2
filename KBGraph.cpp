@@ -16,19 +16,19 @@ KBGraph::~KBGraph(){
 
 bool KBGraph::add(string name, vector<string> titles){
     KBNode node(name, titles);
-    findEdges(node);
     actorList.push_back(node);
+    findEdges();
     return true;
 }
 
-void KBGraph::findEdges(KBNode& node) {
+void KBGraph::findEdges() {
     bool secondBreak = false;
-    for (int i = 0; i < actorList.size(); i++) { //How many actors are in the graph
-        for (int k = 0; k < node.titles.size(); k++) { //The roles the new actor has
+    for (int i = 0; i < actorList.size() - 1; i++) { //How many actors are in the graph
+        for (int k = 0; k < actorList[actorList.size()-1].titles.size(); k++) { //The roles the new actor has
             for (int j = 0; j < actorList[i].titles.size(); j++) { //Roles of the current actor in graph
-                if(node.titles[k] == actorList[i].titles[j]) { //Adds current actors to each others edges
-                    actorList[i].edges.push_back(node.name);
-                    node.edges.push_back(actorList[i].name);
+                if(actorList[actorList.size()-1].titles[k] == actorList[i].titles[j]) { //Adds current actors to each others edges
+                    actorList[i].edges.push_back(actorList[actorList.size()-1].name);
+                    actorList[actorList.size()-1].edges.push_back(actorList[i].name);
                     secondBreak = true;
                     break;
                 }
