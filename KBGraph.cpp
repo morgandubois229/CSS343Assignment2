@@ -27,8 +27,8 @@ void KBGraph::findEdges(KBNode& node) {
         for (int k = 0; k < node.titles.size(); k++) { //The roles the new actor has
             for (int j = 0; j < actorList[i].titles.size(); j++) { //Roles of the current actor in graph
                 if(node.titles[k] == actorList[i].titles[j]) { //Adds current actors to each others edges
-                    actorList[i].edges.push_back(&node);
-                    node.edges.push_back(&actorList[i]);
+                    actorList[i].edges.push_back(node.name);
+                    node.edges.push_back(actorList[i].name);
                     secondBreak = true;
                     break;
                 }

@@ -11,7 +11,7 @@ class KBGraph : public GraphInterface {
     struct KBNode {
         string name = "";
         vector<string> titles;
-        vector<KBNode*> edges;
+        vector<string> edges;
 
         KBNode(string n, vector<string> roles) : name(n) {
             for (int i = 0; i < roles.size(); i++) {
