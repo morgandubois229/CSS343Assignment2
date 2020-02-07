@@ -36,8 +36,8 @@ KBGraph parseInput(char **argv) {
             }
         }
         myFile.close();
-        return theGraph;
     } else cout << "Unable to open file";
+    return theGraph;
 }
 
 bool alreadyEntered(string title, vector<string> listOfTitles) {
@@ -61,6 +61,7 @@ string getTitle(string title) {
             returnString.push_back(title[i]);
         }
     }
+    return returnString;
 }
 
 string getName(string line) {
@@ -72,6 +73,7 @@ string getName(string line) {
             returnString.push_back(line[i]);
         }
     }
+    return returnString;
 }
 
 void addToGraph(vector<string> titles, string name, KBGraph& graph) {

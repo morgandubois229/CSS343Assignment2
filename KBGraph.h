@@ -11,7 +11,7 @@ class KBGraph : public GraphInterface {
     struct KBNode {
         string name = "";
         vector<string> titles;
-        vector<string> edges;
+        vector<int> edges;
 
         KBNode(string n, vector<string> roles) : name(n) {
             for (int i = 0; i < roles.size(); i++) {
@@ -21,6 +21,12 @@ class KBGraph : public GraphInterface {
     };
 
     vector<KBNode> actorList;
+
+    void assignNumber(int array[], int currentNum, KBNode currentActor, int theirIndex);
+
+    void findBaconNumbers();
+
+    void print(int* KBNumbers);
 
 public:
 
